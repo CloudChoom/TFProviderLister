@@ -8,3 +8,10 @@ def GetTFProviders(pageNumber, pageSize):
     provider_response = json.loads(response.data.decode("utf-8"))
 
     return provider_response
+
+def GetProviderDownloadSummary(id):
+    url = Constant.BASE_URL + "/v2/providers/" + id + "/downloads/summary"
+    response = urllib3.PoolManager().request("GET", url, headers={'Content-Type': 'application/json'})
+    summary_response = json.loads(response.data.decode("utf-8"))
+
+    return summary_response
